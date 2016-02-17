@@ -3,7 +3,8 @@
 @font-face {
   font-family: 'variane';
   src:  url('../fonts/variane.woff2') format('woff2'),
-        url('../fontsvariane.woff') format('woff');
+        url('../fontsvariane.woff') format('woff'),
+        url('../fontsvariane.svg#variane_scriptregular') format('svg');
 }
 
 body, html, main {
