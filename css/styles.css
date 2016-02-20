@@ -221,7 +221,7 @@ ul, ol {
   position: relative;
   min-height: 100vh;
   background-size: cover;
-  background-attachment: fixed;
+  
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -245,7 +245,7 @@ ul, ol {
 }
 
 .top-center {
-  top: 20%;  
+  top: 20%;
   text-align: center;  
 }
 
@@ -304,11 +304,35 @@ ul, ol {
   right:0;
 }
 
+.foot-center {
+  position: absolute;
+  bottom: 2%;
+  width: auto;
+  height: auto;
+  text-align: center;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);  
+}
+
+.foot-center:before {
+  text-align: center;
+  -webkit-transform:rotate(90deg);
+  -moz-transform:rotate(90deg);
+  -ms-transform:rotate(90deg);
+  -o-transform:rotate(90deg);
+  transform:rotate(90deg);
+  cursor:pointer;
+}
+
 .ss-thumb-container {
   position: relative;
   width: 7%;
   vertical-align: top;
-  height: 600px;
+  height: 80vh;
   overflow: scroll;
   display: inline-block;
 }
@@ -318,6 +342,7 @@ ul.ss-thumb-list {
   margin: 0;
   padding: 0;
   text-align: center;
+  line-height: 0;
 }
 
 ul.ss-thumb-list li {
@@ -355,7 +380,7 @@ span.ss-thumb-text span {
 }
 
 .ss-profile-overlay {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   max-width: 100%;
@@ -368,7 +393,7 @@ span.ss-thumb-text span {
 
 .ss-pic-container, .ss-text-container {
   vertical-align: top;
-  height: 600px;
+  height: 80vh;
   width: 43%;
   display: inline-block;
 }
@@ -400,10 +425,10 @@ span.ss-thumb-text span {
   background-image: url(../images/bg/save_the_date.jpg);
 }
 #travel {
-  background-image: url(../images/bg/northstar_village_1.jpg);
+  background-image: url(../images/bg/northstar_village.jpg);
 }
 #schedule {
-  background-image: url(../images/bg/northstar_village.jpg);
+  background-image: url(../images/bg/northstar_village_map.jpg);
 }
 #our-story {
   background-image: url(../images/bg/space.jpg);
