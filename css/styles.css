@@ -250,6 +250,7 @@ ul, ol {
 }
 
 .top-center-content {
+  z-index: 999;
   position: absolute;
   top: 10%;
   left: 50%;
@@ -263,6 +264,7 @@ ul, ol {
 }
 
 .bottom-center-content {
+  z-index: 999;  
   position: absolute;
   top: 50%;
   left: 50%;
@@ -275,7 +277,22 @@ ul, ol {
   transform: translateX(-50%);
 }
 
+.bottom-one-line-center-content {
+  z-index: 999;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  width: auto;
+  height: auto;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
 .bottom-right-content {
+  z-index: 999;
   position: absolute;
   left: 50%;
   bottom: 0;  
@@ -305,6 +322,7 @@ ul, ol {
 }
 
 .foot-center {
+  z-index: 999;
   position: absolute;
   bottom: 2%;
   width: auto;
