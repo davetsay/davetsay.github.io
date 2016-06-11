@@ -40,6 +40,10 @@ ul, ol {
   text-shadow: 0 .3rem .75rem rgba(0, 0, 0, 0.5);  
 }
 
+table {
+  margin-top: 10px;
+}
+
 .tahoe {
   font-family: 'variane', sans-serif;
   color: white;
@@ -65,6 +69,10 @@ ul, ol {
 .countdown {
   padding-top: 10px;
   font-size: 2.5rem;
+}
+
+.overflow-scroll {
+  overflow: scroll;
 }
 
 .nav {
@@ -462,6 +470,27 @@ span.ss-thumb-text span {
 }
 #rsvp {
   background-image: url(../images/bg/rsvp.jpg);
+}
+
+#activities .container {
+  margin-top: 2em;
+  height: 60vh;
+  overflow: scroll;
+  font-size: 1.5em;
+}
+
+#activities td {
+  position:relative;
+}
+
+#activities .text {
+  position:absolute;
+  top:50%;
+  right:75%;
+}
+
+#activities .pic {
+  margin-left: 25%;
 }
 
 #registry-gift-boxes {
