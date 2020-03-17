@@ -2,9 +2,8 @@
   <div id="app">
     <div class="content">
       <text-scroll
-        text="Hello World! I'm Dave!"
-      >
-      </text-scroll>
+        text="Hello Universe! I'm Dave!"
+      ></text-scroll>
       </div>
   </div>
 </template>
