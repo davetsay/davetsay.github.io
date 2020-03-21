@@ -1,6 +1,7 @@
 <template>
-  <div
+  <span
     class="text-scroll"
+    :class="[font]"
     :aria-label="text"
   >
     <span
@@ -8,7 +9,7 @@
       :key="index"
       aria-hidden="true"
     >{{char}}</span>
-  </div>
+  </span>
 </template>
 
 <script>
@@ -18,6 +19,10 @@ export default {
     text: {
       type: String,
       default: ''
+    },
+    font: {
+      type: String,
+      default: 'orbitron'
     }
   },
   computed: {
@@ -30,7 +35,14 @@ export default {
 
 <style>
 .text-scroll {
-  font-family: 'Orbitron', sans-serif;
   color: white;
+}
+
+.orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.worm {
+  font-family: 'NasalizationRg-Regular';
 }
 </style>

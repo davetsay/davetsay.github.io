@@ -1,11 +1,26 @@
 <template>
-  <div id="app">
-    <div class="content">
+<div id="app">
+  <div class="content">
+    <text-scroll
+      text="Hello Universe!"
+    ></text-scroll>
+    <text-scroll
+      text="I'm Dave!"
+    ></text-scroll>
+    <div>
       <text-scroll
-        text="Hello Universe! I'm Dave!"
+        text="I work at "
       ></text-scroll>
-      </div>
+      <text-scroll
+        text="NASA"
+        font="worm"
+      ></text-scroll>
+    </div>
+    <text-scroll
+      text="It is "
+    ></text-scroll>
   </div>
+</div>
 </template>
 
 <script>
@@ -20,6 +35,13 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: 'NasalizationRg-Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('NasalizationRg-Regular'), url('assets/fonts/nasalization rg.woff') format('woff');
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -30,7 +52,8 @@ body {
 }
 .content {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   height: 100vh;
   padding-left: 2em;
 }
