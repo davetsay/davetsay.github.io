@@ -1,36 +1,59 @@
 <template>
 <div id="app">
   <div class="content">
-    <text-scroll
+    <TextScroll
       text="Hello Universe!"
-    ></text-scroll>
-    <text-scroll
+    />
+    <TextScroll
       text="I'm Dave!"
-    ></text-scroll>
+    />
     <div>
-      <text-scroll
+      <TextScroll
         text="I work at "
-      ></text-scroll>
-      <text-scroll
+      />
+      <TextScroll
         text="NASA"
-        font="worm"
-      ></text-scroll>
+        class="nasa"
+      />
     </div>
-    <text-scroll
-      text="It is "
-    ></text-scroll>
+    <TextScroll
+      text="It's "
+    />
+    <TextFlash
+      :words="words"
+      class="nasa"
+    />
   </div>
 </div>
 </template>
 
 <script>
 import TextScroll from './components/TextScroll.vue'
+import TextFlash from './components/TextFlash.vue'
 
 export default {
   name: 'App',
   components: {
-    TextScroll
-  }
+    TextScroll,
+    TextFlash
+  },
+  computed: {
+    words() {
+      return [
+        'cool',
+        'exciting',
+        'challenging',
+        'fun',
+        'fullfilling',
+        'worthwhile',
+        'did I say cool?',
+        'space',
+        'engaging',
+        'awe inspiring',
+        'the Future',
+      ]
+    }
+  },
 }
 </script>
 
@@ -56,12 +79,6 @@ body {
   justify-content: center;
   height: 100vh;
   padding-left: 2em;
-}
-
-.text-scroll {
-  white-space: pre;
-  font-size: 4em;
-  word-wrap: normal;
 }
 
 #app {
