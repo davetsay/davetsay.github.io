@@ -2,22 +2,27 @@
 <div id="app">
   <div class="content">
     <TextScroll
-      text="Hello Universe!"
+      :text="text['1']"
+      animation-set="1"
     />
     <TextScroll
       text="I'm Dave!"
+      animation-set="2"
     />
     <div>
       <TextScroll
         text="I work at "
+        animation-set="3"
       />
       <TextScroll
         text="NASA"
         class="nasa"
+        animation-set="4"
       />
     </div>
     <TextScroll
       text="It's "
+      animation-set="5"
     />
     <TextFlash
       :words="words"
@@ -28,6 +33,7 @@
 </template>
 
 <script>
+import anime from 'animejs/lib/anime.es.js'
 import TextScroll from './components/TextScroll.vue'
 import TextFlash from './components/TextFlash.vue'
 
@@ -35,7 +41,29 @@ export default {
   name: 'App',
   components: {
     TextScroll,
-    TextFlash
+    TextFlash,
+  },
+  mounted() {
+    this.timeline = anime.timeline()
+
+    for (let i = 0; i < this.text['1'].length; i++) {
+      console.log(`animation-set-1-${i}`)
+      this.timeline.add({
+        targets: `.animation-set-1-${i}`,
+        opacity: 1,
+        duration: 100,
+      }, '+=100')
+    }
+  },
+  data() {
+    return {
+      text: {
+        '1': 'Hello Universe!',
+      }
+    }
+  },
+  methods: {
+
   },
   computed: {
     words() {

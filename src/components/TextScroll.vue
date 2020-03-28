@@ -7,6 +7,8 @@
     <span
       v-for="(char, index) in textAsArray"
       :key="index"
+      class="hidden"
+      :class="animationId(index)"
       aria-hidden="true"
     >{{char}}</span>
   </span>
@@ -23,6 +25,15 @@ export default {
     font: {
       type: String,
       default: 'orbitron'
+    },
+    animationSet: {
+      type: String,
+      required: true
+    }
+  },
+  methods: {
+    animationId(index) {
+      return `animation-set-${this.animationSet}-${index}`
     }
   },
   computed: {
@@ -48,5 +59,9 @@ export default {
   font-family: 'NasalizationRg-Regular';
   color: #1a73e8;
   font-size: 4.5em;
+}
+
+.hidden {
+  opacity: 0;
 }
 </style>
