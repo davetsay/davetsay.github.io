@@ -2,40 +2,81 @@
 <div id="app">
   <div class="content">
     <TextScroll
-      text="Hello Universe!"
+      ref="animation1"
+      :text="animation[1].text"
     />
     <TextScroll
-      text="I'm Dave!"
+      ref="animation2"
+      :text="animation[2].text"
     />
     <div>
       <TextScroll
-        text="I work at "
+        ref="animation3"
+        :text="animation[3].text"
       />
       <TextScroll
-        text="NASA"
-        class="nasa"
+        ref="animation4"
+        :text="animation[4].text"
+        class="nasa" 
       />
     </div>
     <TextScroll
-      text="It's "
+        ref="animation5"
+        :text="animation[5].text"
     />
     <TextFlash
       :words="words"
       class="nasa"
     />
+    
   </div>
 </div>
 </template>
 
 <script>
-import TextScroll from './components/TextScroll.vue'
-import TextFlash from './components/TextFlash.vue'
+import anime from 'animejs/lib/anime.es.js'
+import TextScroll from './components/TextScroll'
+import TextFlash from './components/TextFlash'
 
 export default {
   name: 'App',
   components: {
     TextScroll,
-    TextFlash
+    TextFlash,
+  },
+  mounted() {
+    this.timeline = anime.timeline()
+    Object.entries(this.animation).forEach(([key, animationBlock]) => {
+      for (let i = 0; i < animationBlock.text.length; i++) {
+        this.timeline.add({
+          targets: this.$refs[`animation${key}`].$refs[i],
+          opacity: 1,
+          duration: 100,
+        }, '+=100')
+      }
+      
+    })
+  },
+  data() {
+    return {
+      animation: {
+        1: {
+          text: 'Hello Universe!',
+        },
+        2: {
+          text: 'I\'m Dave!',
+        },
+        3: {
+          text: 'I develop software for ',
+        },
+        4: {
+          text: 'NASA',
+        },
+        5: {
+          text: 'It. Is. ',
+        },
+      },
+    }
   },
   computed: {
     words() {
@@ -84,5 +125,9 @@ body {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.hidden {
+  opacity: 0;
+  color: white;
 }
 </style>
