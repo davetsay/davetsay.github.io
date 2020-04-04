@@ -47,15 +47,31 @@ export default {
   mounted() {
     this.timeline = anime.timeline()
     Object.entries(this.animation).forEach(([key, animationBlock]) => {
-      for (let i = 0; i < animationBlock.text.length; i++) {
+      this.animateBlock(key, animationBlock)
+    })
+  },
+  methods: {
+    animateBlock(key, block) {
+      const type = block.type
+
+      if (type === 'flash') {
+        this.animateFlash(key, block)
+      } else {
+        this.animateScroll(key, block)
+      }
+    },
+    animateScroll(key, block) {
+      for (let i = 0; i < block.text.length; i++) {
         this.timeline.add({
           targets: this.$refs[`animation${key}`].$refs[i],
           opacity: 1,
           duration: 100,
         }, '+=100')
       }
-      
-    })
+    },
+    animateFlash(key, block) {
+      console.log(`${key}${block}`)
+    },
   },
   data() {
     return {
@@ -75,24 +91,23 @@ export default {
         5: {
           text: 'It. Is. ',
         },
+        6: {
+          type: 'flash',
+          words: [
+            'cool',
+            'exciting',
+            'challenging',
+            'fun',
+            'fullfilling',
+            'worthwhile',
+            'did I say cool?',
+            'space',
+            'engaging',
+            'awe inspiring',
+            'the Future',
+          ]
+        }
       },
-    }
-  },
-  computed: {
-    words() {
-      return [
-        'cool',
-        'exciting',
-        'challenging',
-        'fun',
-        'fullfilling',
-        'worthwhile',
-        'did I say cool?',
-        'space',
-        'engaging',
-        'awe inspiring',
-        'the Future',
-      ]
     }
   },
 }
