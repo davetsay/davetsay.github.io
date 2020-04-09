@@ -1,6 +1,17 @@
 <template>
-<span>
-
+<span
+class="text-flash"
+:class="[font]"
+:aria-label="text"
+>
+    <span
+        v-for="(word, index) in text"
+        :key="index"
+        ref="text"
+        aria-hidden="true"
+    >
+        {{ word }}
+    </span>
 </span>    
 </template>
 
@@ -8,10 +19,21 @@
 export default {
     name: 'TextFlash',
     props: {
-        words: {
+        text: {
             type: Array,
             required: true
         }
     }
 }
 </script>
+
+<style scoped>
+.text-flash {
+    position: relative;
+}
+
+.text-flash > span {
+    position: absolute;
+    left: 0;
+}
+</style>

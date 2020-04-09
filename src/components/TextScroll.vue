@@ -8,10 +8,9 @@
       v-for="(char, index) in textAsArray"
       :key="index"
       class="hidden"
-      :class="animationId(index)"
-      :ref="index"
+      ref="text"
       aria-hidden="true"
-    >{{char}}</span>
+    >{{ char }}</span>
   </span>
 </template>
 
@@ -27,11 +26,6 @@ export default {
       type: String,
       default: 'orbitron'
     },
-  },
-  methods: {
-    animationId(index) {
-      return `animation-set-${this.animationSet}-${index}`
-    }
   },
   computed: {
     textAsArray() {

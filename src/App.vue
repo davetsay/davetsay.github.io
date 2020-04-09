@@ -25,7 +25,8 @@
         :text="animation[5].text"
     />
     <TextFlash
-      :words="words"
+      ref="animation6"
+      :text="animation[6].text"
       class="nasa"
     />
     
@@ -52,48 +53,79 @@ export default {
   },
   methods: {
     animateBlock(key, block) {
-      const type = block.type
-
-      if (type === 'flash') {
-        this.animateFlash(key, block)
+      const id = this.getId(key)
+      if (block.type === 'flash') {
+        this.animateFlash(id)
       } else {
-        this.animateScroll(key, block)
+        this.animateTypewriter(id)
       }
     },
-    animateScroll(key, block) {
-      for (let i = 0; i < block.text.length; i++) {
+    animateTypewriter(id) {
+      this.timeline.add({
+        targets: this.$refs[id].$refs.text,
+        opacity: 1,
+        duration: 100,
+        delay: (el, i) => 100 + 50 * i
+      })
+    },
+    animateFlash(id) {
+      const words = this.$refs[id].$refs.text
+      const finalWord = words.splice(-1, 1)
+      words.forEach(word => {
         this.timeline.add({
-          targets: this.$refs[`animation${key}`].$refs[i],
-          opacity: 1,
-          duration: 100,
-        }, '+=100')
-      }
+          targets: word,
+          opacity: [0,1],
+          scale: [0.2, 1],
+          duration: 800,
+        })
+  
+        this.timeline.add({
+          targets: word,
+          opacity: 0,
+          scale: 3,
+          duration: 600,
+          easing: "easeInExpo",
+          delay: 500,
+        })
+      })
+
+      this.timeline.add({
+        targets: finalWord,
+        opacity: [0,1],
+        scale: [0.2, 1],
+        duration: 800,
+      })
     },
-    animateFlash(key, block) {
-      console.log(`${key}${block}`)
-    },
+    getId(key) {
+      return `animation${key}`
+    }
   },
   data() {
     return {
       animation: {
         1: {
+          type: 'typewriter',
           text: 'Hello Universe!',
         },
         2: {
+          type: 'typewriter',
           text: 'I\'m Dave!',
         },
         3: {
+          type: 'typewriter',
           text: 'I develop software for ',
         },
         4: {
+          type: 'typewriter',
           text: 'NASA',
         },
         5: {
-          text: 'It. Is. ',
+          type: 'typewriter',
+          text: 'Work is... ',
         },
         6: {
           type: 'flash',
-          words: [
+          text: [
             'cool',
             'exciting',
             'challenging',
@@ -135,6 +167,8 @@ body {
   justify-content: center;
   height: 100vh;
   padding-left: 2em;
+
+  color: white;
 }
 
 #app {
@@ -143,6 +177,5 @@ body {
 }
 .hidden {
   opacity: 0;
-  color: white;
 }
 </style>
