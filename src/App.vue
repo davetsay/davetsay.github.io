@@ -26,7 +26,7 @@
     />
     <TextFlash
       ref="animation6"
-      :text="animation[6].text"
+      :text="getWords(animation[6].text)"
       class="nasa"
     />
     
@@ -50,8 +50,12 @@ export default {
     Object.entries(this.animation).forEach(([key, animationBlock]) => {
       this.animateBlock(key, animationBlock)
     })
+    // this.animateBlock(6, this.animation[6])
   },
   methods: {
+    getWords(text) {
+      return text.map(el => el.word)
+    },
     animateBlock(key, block) {
       const id = this.getId(key)
       if (block.type === 'flash') {
@@ -71,29 +75,43 @@ export default {
     animateFlash(id) {
       const words = this.$refs[id].$refs.text
       const finalWord = words.splice(-1, 1)
+      const durations = this.animation[6].text.map(el => el.duration)
+      let count = 0
+
       words.forEach(word => {
         this.timeline.add({
           targets: word,
           opacity: [0,1],
-          scale: [0.2, 1],
-          duration: 800,
+          duration: () => 2 * durations[count++],
         })
   
         this.timeline.add({
           targets: word,
           opacity: 0,
-          scale: 3,
-          duration: 600,
-          easing: "easeInExpo",
-          delay: 500,
+          duration: () => 1,
         })
+
+        // this.timeline.add({
+        //   targets: word,
+        //   opacity: [0,1],
+        //   scale: [0.2, 1],
+        //   duration: 50,
+        // })
+  
+        // this.timeline.add({
+        //   targets: word,
+        //   opacity: 0,
+        //   scale: 3,
+        //   duration: 100,
+        //   easing: "easeInExpo",
+        // })
       })
 
       this.timeline.add({
         targets: finalWord,
         opacity: [0,1],
         scale: [0.2, 1],
-        duration: 800,
+        duration: 1200,
       })
     },
     getId(key) {
@@ -109,11 +127,11 @@ export default {
         },
         2: {
           type: 'typewriter',
-          text: 'I\'m Dave!',
+          text: 'I\'m Dave! A codernaut',
         },
         3: {
           type: 'typewriter',
-          text: 'I develop software for ',
+          text: 'for ',
         },
         4: {
           type: 'typewriter',
@@ -121,22 +139,107 @@ export default {
         },
         5: {
           type: 'typewriter',
-          text: 'Work is... ',
+          text: 'Work is like ',
         },
         6: {
           type: 'flash',
           text: [
-            'cool',
-            'exciting',
-            'challenging',
-            'fun',
-            'fullfilling',
-            'worthwhile',
-            'did I say cool?',
-            'space',
-            'engaging',
-            'awe inspiring',
-            'the Future',
+            {
+              word: 'Whoa!',
+              duration: 350,
+            },
+            {
+              word: 'space',
+              duration: 325,
+            },
+            {
+              word: 'cool',
+              duration: 300,
+            },
+            {
+              word: 'exploration',
+              duration: 200,
+            },
+            {
+              word: 'missions',
+              duration: 150,
+            },
+            {
+              word: 'moon',
+              duration: 135,
+            },
+            {
+              word: 'mars',
+              duration: 125,
+            },
+            {
+              word: 'perseverance',
+              duration: 115,
+            },
+            {
+              word: 'did I say cool?',
+              duration: 100,
+            },
+            {
+              word: 'all the science',
+              duration: 250,
+            },
+            {
+              word: 'math',
+              duration: 100,
+            },
+            {
+              word: 'physics',
+              duration: 85,
+            },
+            {
+              word: 'astrophysics',
+              duration: 70,
+            },
+            {
+              word: 'thermodynamic',
+              duration: 65,
+            },
+            {
+              word: 'flight dynamics',
+              duration: 50,
+            },
+            {
+              word: 'robotics',
+              duration: 50,
+            },
+            {
+              word: 'spacecraft',
+              duration: 50,
+            },
+            {
+              word: 'trajectory',
+              duration: 50,
+            },
+            {
+              word: 'rovers',
+              duration: 50,
+            },
+            {
+              word: 'quantum what?',
+              duration: 200,
+            },
+            {
+              word: 'vista',
+              duration: 150,
+            },
+            {
+              word: 'viper',
+              duration: 150,
+            },
+            {
+              word: 'artemis',
+              duration: 100,
+            },
+            {
+              word: 'the Future',
+              duration: 1000,
+            },
           ]
         }
       },

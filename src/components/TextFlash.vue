@@ -1,8 +1,7 @@
 <template>
 <span
-class="text-flash"
-:class="[font]"
-:aria-label="text"
+    class="text-flash"
+    :aria-label="text"
 >
     <span
         v-for="(word, index) in text"
