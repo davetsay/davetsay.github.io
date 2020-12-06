@@ -29,6 +29,7 @@ export default {
 <style scoped>
 .text-flash {
     position: relative;
+    color: #1a73e8;
 }
 
 .text-flash > span {

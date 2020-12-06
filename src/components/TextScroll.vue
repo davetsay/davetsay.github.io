@@ -48,8 +48,11 @@ export default {
 
 .nasa {
   font-family: 'NasalizationRg-Regular';
-  color: #1a73e8;
   font-size: 4.5em;
+}
+
+.worm {
+  color: #FC3D21;
 }
 
 .hidden {

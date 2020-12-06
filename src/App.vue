@@ -17,7 +17,7 @@
       <TextScroll
         ref="animation4"
         :text="animation[4].text"
-        class="nasa" 
+        class="nasa worm"
       />
     </div>
     <TextScroll
@@ -50,7 +50,6 @@ export default {
     Object.entries(this.animation).forEach(([key, animationBlock]) => {
       this.animateBlock(key, animationBlock)
     })
-    // this.animateBlock(6, this.animation[6])
   },
   methods: {
     getWords(text) {
@@ -90,21 +89,6 @@ export default {
           opacity: 0,
           duration: () => 1,
         })
-
-        // this.timeline.add({
-        //   targets: word,
-        //   opacity: [0,1],
-        //   scale: [0.2, 1],
-        //   duration: 50,
-        // })
-  
-        // this.timeline.add({
-        //   targets: word,
-        //   opacity: 0,
-        //   scale: 3,
-        //   duration: 100,
-        //   easing: "easeInExpo",
-        // })
       })
 
       this.timeline.add({
@@ -127,7 +111,7 @@ export default {
         },
         2: {
           type: 'typewriter',
-          text: 'I\'m Dave! A codernaut',
+          text: `I'm Dave! A codernaut`,
         },
         3: {
           type: 'typewriter',
@@ -145,16 +129,16 @@ export default {
           type: 'flash',
           text: [
             {
-              word: 'Whoa!',
-              duration: 350,
-            },
-            {
               word: 'space',
               duration: 325,
             },
             {
               word: 'cool',
               duration: 300,
+            },
+            {
+              word: 'Whoa!',
+              duration: 250,
             },
             {
               word: 'exploration',
@@ -197,11 +181,15 @@ export default {
               duration: 70,
             },
             {
-              word: 'thermodynamic',
+              word: 'thermodynamics',
               duration: 65,
             },
             {
               word: 'flight dynamics',
+              duration: 50,
+            },
+            {
+              word: 'water ice',
               duration: 50,
             },
             {
@@ -221,6 +209,10 @@ export default {
               duration: 50,
             },
             {
+              word: 'extraterrestrial life',
+              duration: 50,
+            },
+            {
               word: 'quantum what?',
               duration: 200,
             },
@@ -234,7 +226,7 @@ export default {
             },
             {
               word: 'artemis',
-              duration: 100,
+              duration: 150,
             },
             {
               word: 'the Future',
